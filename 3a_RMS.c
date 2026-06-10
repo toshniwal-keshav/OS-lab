@@ -7,7 +7,7 @@ struct Process {
     int bt;
     int period;
     int rt, next_at, deadline ,ct ,tat ,wt;
-    int last_finish_time;
+    int arrival_time;
     int total_jobs;
 };
 
@@ -29,7 +29,7 @@ void RMS_Preemptive(struct Process t[], int n) {
         t[i].next_at = 0;
         t[i].deadline = t[i].period;
         t[i].ct = t[i].tat = t[i].wt = 0;
-        t[i].last_finish_time = 0;
+        t[i].arrival_time = 0;
         t[i].total_jobs = 0;
     }
     
@@ -49,7 +49,7 @@ void RMS_Preemptive(struct Process t[], int n) {
                 t[i].rt = t[i].bt;
                 t[i].deadline = time + t[i].period;
                 t[i].next_at += t[i].period;
-                t[i].last_finish_time = time;
+                t[i].arrival_time = time;
             }
         }
         int idx = -1;
@@ -66,7 +66,7 @@ void RMS_Preemptive(struct Process t[], int n) {
             if (t[idx].rt == 0) {
                 int finish = time + 1;
                 t[idx].ct = finish; 
-                int tat = finish - (t[idx].last_finish_time);
+                int tat = finish - (t[idx].arrival_time);
                 int wt = tat - t[idx].bt;
                 t[idx].tat += tat;
                 t[idx].wt += wt;
