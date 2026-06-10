@@ -45,6 +45,8 @@ void EDF_Preemptive(struct Process t[], int n) {
     for (int time = 0; time < totalTime; time++) {
         for (int i = 0; i < n; i++) {
             if (time == t[i].next_at) {
+                if(t[i].rt > 0) 
+                     printf("Deadline Miss by Process %d at time %d\n",t[idx].id, finish);
                 t[i].rt = t[i].bt;
                 t[i].arrival_time = time;
                 t[i].deadline = time + t[i].period;
@@ -72,9 +74,6 @@ void EDF_Preemptive(struct Process t[], int n) {
                 t[idx].wt += tat - t[idx].bt;
 
                 t[idx].total_jobs++;
-
-                if (finish > t[idx].deadline)
-                    printf("Deadline Miss by Process %d at time %d\n",t[idx].id, finish);
             }
         }
         else gantt[time] = -1;
