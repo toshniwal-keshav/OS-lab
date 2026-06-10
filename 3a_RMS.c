@@ -47,7 +47,7 @@ void RMS_Preemptive(struct Process t[], int n) {
         for (int i = 0; i < n; i++) {
             if (time == t[i].next_at) {
                  if(t[i].rt > 0) 
-                     printf("Deadline Miss by Process %d at time %d\n",t[idx].id, time);
+                     printf("Deadline Miss by Process %d at time %d\n",t[i].id, time);
                 t[i].rt = t[i].bt;
                 t[i].deadline = time + t[i].period;
                 t[i].next_at += t[i].period;
@@ -69,7 +69,7 @@ void RMS_Preemptive(struct Process t[], int n) {
                 int finish = time + 1;
                 t[idx].ct = finish; 
                 t[idx].tat += finish - t[idx].arrival_time;
-                t[idx].wt += tat - t[idx].bt;
+                t[idx].wt += t[idx].tat - t[idx].bt;
                 t[idx].total_jobs++;
             }
 
