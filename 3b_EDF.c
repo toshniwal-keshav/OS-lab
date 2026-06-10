@@ -20,7 +20,7 @@ struct Process {
 };
 
 int gcd(int a , int b){
-    return b==0? 0: gcd(b, a%b);
+    return b==0? a: gcd(b, a%b);
 }
 int lcm(int a , int b){
     return (b*a)/gcd(a,b);
