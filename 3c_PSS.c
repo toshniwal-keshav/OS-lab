@@ -19,13 +19,13 @@ int totalTime(int n){
     return tot;
 }
 void PSS(int n){
-    int t=0,done=0,last=0,q;
+    int t=0,done=0,last=-1,q;
     int tot = totalTime(n);
     float awt=0.0, atat=0.0;
     int gantt[tot];
     while(done < n){
         int found =0;
-        for(int i=0;i<n;i++){
+        for(int i=1;i<=n;i++){
             int idx = (last +i)%n;
             q = arr[idx][2];
             if(arr[idx][5] != 1){
