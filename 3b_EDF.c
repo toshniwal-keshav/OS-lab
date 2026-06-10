@@ -68,11 +68,9 @@ void EDF_Preemptive(struct Process t[], int n) {
                 int finish = time + 1;
                 t[idx].ct = finish;
 
-                int tat = finish - t[idx].arrival_time;
-                int wt = tat - t[idx].bt;
+                t[idx].tat += finish - t[idx].arrival_time;
+                t[idx].wt += tat - t[idx].bt;
 
-                t[idx].tat += tat;
-                t[idx].wt += wt;
                 t[idx].total_jobs++;
 
                 if (finish > t[idx].deadline)
