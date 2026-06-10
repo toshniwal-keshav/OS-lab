@@ -62,7 +62,7 @@ void PSS(int n){
         printf("\n\t TAT\t WT\n");
         for(int i=0;i<n;i++) 
             printf("P%d:\t%.2f\t%.2f\n", arr[i][0], (float)arr[i][4], (float)arr[i][3]);
-        printf("\nAverage TAT: %.2f\nAverage WT: %.2f\n", awt, atat);
+        printf("\nAverage TAT: %.2f\nAverage WT: %.2f\n", atat, awt);
     
 }
 
